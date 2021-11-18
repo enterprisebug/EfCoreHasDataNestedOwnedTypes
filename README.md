@@ -1,0 +1,2 @@
+# EfCoreHasDataNestedOwnedTypes
+Minimal reproducible example
