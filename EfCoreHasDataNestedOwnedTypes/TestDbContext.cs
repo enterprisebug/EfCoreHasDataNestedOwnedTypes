@@ -21,7 +21,8 @@ namespace EfCoreHasDataNestedOwnedTypes
         {
             modelBuilder.Entity<RootEntity>(b =>
             {
-                b.OwnsOne(x => x.OwnedEntityLevel1, ob => { ob.OwnsOne(x => x.OwnedEntityLevel2); });
+                b
+                    .OwnsOne(x => x.OwnedEntityLevel1, ob => { ob.OwnsOne(x => x.OwnedEntityLevel2); });
             });
         }
     }
