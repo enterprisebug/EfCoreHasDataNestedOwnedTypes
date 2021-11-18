@@ -8,23 +8,24 @@ namespace EfCoreHasDataNestedOwnedTypes.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "EntityLevel1s",
+                name: "RootEntities",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OwnedEntity1_Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    OwnedEntity1_MyProperty = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    OwnedEntityLevel1_Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    OwnedEntityLevel1_OwnedEntityLevel2_Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    OwnedEntityLevel1_OwnedEntityLevel2_MyProperty = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntityLevel1s", x => x.Id);
+                    table.PrimaryKey("PK_RootEntities", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EntityLevel1s");
+                name: "RootEntities");
         }
     }
 }
