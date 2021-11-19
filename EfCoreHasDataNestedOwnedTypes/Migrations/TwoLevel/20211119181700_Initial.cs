@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EfCoreHasDataNestedOwnedTypes.Migrations.TwoLevelDbContext
+namespace EfCoreHasDataNestedOwnedTypes.Migrations.TwoLevel
 {
     public partial class Initial : Migration
     {

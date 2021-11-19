@@ -23,7 +23,7 @@ public class ThreeLevelDbContext : DbContext
         modelBuilder.Entity<RootEntity>(b =>
         {
             b
-                .OwnsOne(x => x.OwnedEntityLevel1)
+                .OwnsOne(x => x.OwnedEntityLevel1, ob => { ob.OwnsOne(x => x.OwnedEntityLevel2); })
                 .HasData(RootEntity.All.Select(x => new { x.OwnedEntityLevel1.Id, RootEntityId = x.Id }))
                 ;
             b.HasData(RootEntity.All.Select(x => new { x.Id }));
