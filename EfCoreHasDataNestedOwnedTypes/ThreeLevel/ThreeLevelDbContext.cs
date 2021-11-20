@@ -22,25 +22,26 @@ public class ThreeLevelDbContext : DbContext
     {
         modelBuilder.Entity<RootEntity>(b =>
         {
-            b
-                .OwnsOne(x => x.OwnedEntityLevel1, ob =>
+            b.OwnsOne(x => x.OwnedEntityLevel1, ob =>
+            {
+                ob.OwnsOne(x => x.OwnedEntityLevel2, iob =>
                 {
-                    ob.OwnsOne(x => x.OwnedEntityLevel2)
-                        //.HasData(RootEntity.All.Select(x => new
-                        //{
-                        //    x.OwnedEntityLevel1.OwnedEntityLevel2.Id,
-                        //    x.OwnedEntityLevel1.OwnedEntityLevel2.MyProperty,
-                        //    OwnedEntityLevel1RootEntityId = x.Id
-                        //}))
-                        ;
-                })
-                .HasData(RootEntity.All.Select(x => new
+                    iob.HasData(RootEntity.All.Select(x => new
+                    {
+                        x.OwnedEntityLevel1.OwnedEntityLevel2.Id,
+                        x.OwnedEntityLevel1.OwnedEntityLevel2.MyProperty,
+                        OwnedEntityLevel1RootEntityId = x.Id
+                    }));
+                });
+
+                ob.HasData(RootEntity.All.Select(x => new
                 {
-                    x.OwnedEntityLevel1.Id, RootEntityId = x.Id,
+                    x.OwnedEntityLevel1.Id,
+                    RootEntityId = x.Id,
                     OwnedEntityLevel1RootEntityId = x.Id,
                     OwnedEntityLevel2Id = x.OwnedEntityLevel1.OwnedEntityLevel2.Id
-                }))
-                ;
+                }));
+            });
             b.HasData(RootEntity.All.Select(x => new { x.Id }));
         });
     }
