@@ -22,10 +22,8 @@ public class TwoLevelDbContext : DbContext
     {
         modelBuilder.Entity<RootEntity>(b =>
         {
-            b
-                .OwnsOne(x => x.OwnedEntityLevel1)
-                .HasData(RootEntity.All.Select(x => new { x.OwnedEntityLevel1.Id, RootEntityId = x.Id }))
-                ;
+            b.OwnsOne(x => x.OwnedEntityLevel1,
+                ob => { ob.HasData(RootEntity.All.Select(x => new { x.OwnedEntityLevel1.Id, RootEntityId = x.Id })); });
             b.HasData(RootEntity.All.Select(x => new { x.Id }));
         });
     }
