@@ -22,3 +22,9 @@ See Migration `20211120092746_Initial` which generated insert statements for a e
 **Scripts*+*
 	dotnet ef migrations add Initial --context ThreeLevelDbContext -o Migrations/ThreeLevel
 	dotnet ef migrations remove --context TwoLevelDbContext
+
+## ThreeLevelWithBoolDbContext
+
+**Scripts*+*
+	dotnet ef migrations add Initial --context ThreeLevelWithBoolDbContext -o Migrations/ThreeLevelWithBool
+	dotnet ef migrations remove --context ThreeLevelWithBoolDbContext
