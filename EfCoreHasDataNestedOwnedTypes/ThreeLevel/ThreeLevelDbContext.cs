@@ -7,7 +7,7 @@ namespace EfCoreHasDataNestedOwnedTypes.ThreeLevel;
 
 public class ThreeLevelDbContext : DbContext
 {
-    public DbSet<RootEntity> RootEntities { get; set; }
+    public DbSet<RootEntity> RootEntities { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

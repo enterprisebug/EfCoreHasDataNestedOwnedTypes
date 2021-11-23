@@ -7,6 +7,7 @@ public class RootEntity
 {
     protected RootEntity()
     {
+        OwnedEntityLevel1 = null!;
     }
 
     public RootEntity(Guid id, OwnedEntityLevel1 ownedEntityLevel1)
@@ -60,11 +61,11 @@ public class RootEntity
 public class OwnedEntityLevel1
 {
     public Guid Id { get; set; }
-    public OwnedEntityLevel2 OwnedEntityLevel2 { get; set; }
+    public OwnedEntityLevel2 OwnedEntityLevel2 { get; set; } = null!;
 }
 
 public class OwnedEntityLevel2
 {
     public Guid Id { get; set; }
-    public string MyProperty { get; set; }
+    public string MyProperty { get; set; } = string.Empty;
 }

@@ -7,6 +7,7 @@ public class RootEntity
 {
     protected RootEntity()
     {
+        OwnedEntityLevel1 = null!;
     }
 
     public RootEntity(Guid id, OwnedEntityLevel1 ownedEntityLevel1)

@@ -7,7 +7,7 @@ namespace EfCoreHasDataNestedOwnedTypes.NullableObjectNestedNonNullable;
 
 public class NullableObjectNestedNonNullableDbContext : DbContext
 {
-    public DbSet<RootEntity> RootEntities { get; set; }
+    public DbSet<RootEntity> RootEntities { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -22,7 +22,7 @@ public class NullableObjectNestedNonNullableDbContext : DbContext
     {
         modelBuilder.Entity<RootEntity>(b =>
         {
-            b.OwnsOne(x => x.OwnedEntityLevel1, ob =>
+            b.OwnsOne(x => x!.OwnedEntityLevel1, ob =>
             {
                 ob.OwnsOne(x => x.OwnedEntityLevel2, iob =>
                 {

@@ -7,7 +7,7 @@ namespace EfCoreHasDataNestedOwnedTypes.NullableObject;
 
 public class NullableObjectDbContext : DbContext
 {
-    public DbSet<RootEntity> RootEntities { get; set; }
+    public DbSet<RootEntity> RootEntities { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
