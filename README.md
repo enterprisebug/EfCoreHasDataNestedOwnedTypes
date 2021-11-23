@@ -2,29 +2,30 @@
 Minimal reproducible example
 
 # Problem
-How to seed entities with `.HasData` when having more than two levels
+How to seed entities with `.OwnsOne` and `.HasData` when having nullable objects
 
-# Solution
-see `ThreeLevelDbContext` for a working solution
+## NullableObject (not working)
 
-## TwoLevelDbContext
-TwoLevelDbContext is working fine.
+**Scripts*+*
+	dotnet ef migrations add Initial --context NullableObjectDbContext -o Migrations/NullableObject
+	dotnet ef migrations remove --context NullableObjectDbContext
 
-See Migration `20211120092746_Initial` which generated insert statements for a entity with two levels
+## TwoLevelDbContext (working)
 
 **Scripts*+*
 	dotnet ef migrations add Initial --context TwoLevelDbContext -o Migrations/TwoLevel
 	dotnet ef migrations remove --context TwoLevelDbContext
 
 
-## ThreeLevelDbContext
+## ThreeLevelDbContext (working)
 
 **Scripts*+*
 	dotnet ef migrations add Initial --context ThreeLevelDbContext -o Migrations/ThreeLevel
 	dotnet ef migrations remove --context TwoLevelDbContext
 
-## ThreeLevelWithBoolDbContext
+## SimpleNullableDbContext (working)
 
 **Scripts*+*
-	dotnet ef migrations add Initial --context ThreeLevelWithBoolDbContext -o Migrations/ThreeLevelWithBool
-	dotnet ef migrations remove --context ThreeLevelWithBoolDbContext
+	dotnet ef migrations add Initial --context SimpleNullableDbContext -o Migrations/SimpleNullable
+	dotnet ef migrations remove --context SimpleNullableDbContext
+
