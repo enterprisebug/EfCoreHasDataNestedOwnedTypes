@@ -4,7 +4,7 @@ Minimal reproducible example
 # Problem
 How to seed entities with `.OwnsOne` and `.HasData` when having nullable objects
 
-## NullableObject (not working)
+## NullableObject (working)
 
 **Scripts*+*
 
@@ -32,4 +32,11 @@ How to seed entities with `.OwnsOne` and `.HasData` when having nullable objects
 
 	dotnet ef migrations add Initial --context SimpleNullableDbContext -o Migrations/SimpleNullable
 	dotnet ef migrations remove --context SimpleNullableDbContext
+
+## NullableObjectNestedNonNullable (not working)
+
+**Scripts*+*
+
+	dotnet ef migrations add Initial --context NullableObjectNestedNonNullableDbContext -o Migrations/NullableObjectNestedNonNullable
+	dotnet ef migrations remove --context NullableObjectNestedNonNullableDbContext
 
