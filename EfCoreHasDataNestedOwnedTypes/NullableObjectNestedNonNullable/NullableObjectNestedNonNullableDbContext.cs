@@ -22,7 +22,7 @@ public class NullableObjectNestedNonNullableDbContext : DbContext
     {
         modelBuilder.Entity<RootEntity>(b =>
         {
-            b.OwnsOne(x => x!.OwnedEntityLevel1, ob =>
+            b.OwnsOne(x => x.OwnedEntityLevel1, ob =>
             {
                 ob.OwnsOne(x => x.OwnedEntityLevel2, iob =>
                 {
