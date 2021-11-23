@@ -24,8 +24,9 @@ public class NullableObjectDbContext : DbContext
         {
             b.OwnsOne(x => x.OwnedEntityLevel1, ob =>
             {
-                ob.HasData(RootEntity.All.Select(x => new
-                    { x.OwnedEntityLevel1?.Id, RootEntityId = x.Id }));
+                ob.HasData(RootEntity.All
+                    .Where(x => x.OwnedEntityLevel1 != null)
+                    .Select(x => new { x.OwnedEntityLevel1?.Id, RootEntityId = x.Id }));
             });
             b.HasData(RootEntity.All.Select(x => new { x.Id }));
         });
